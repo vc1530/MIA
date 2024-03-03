@@ -5,7 +5,7 @@ using UnityEngine;
 public class SilkfangHealth : MonoBehaviour
 {
 
-    public int maxHealth = 500; 
+    public int maxHealth = 200; 
     public int health; 
     public Animator anim; 
     // Start is called before the first frame update

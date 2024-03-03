@@ -64,10 +64,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/Characters/Silkfang/Scripts/SilkfangPatrol.cs" />
+    <Compile Include="Assets/Characters/CorpseSweeper/Scripts/CorpseSweeperHealth.cs" />
     <Compile Include="Assets/Characters/Reg/Scripts/RegDamage.cs" />
     <Compile Include="Assets/Characters/Silkfang/Scripts/SilkfangDamage.cs" />
     <Compile Include="Assets/Characters/Reg/Scripts/RegHealth.cs" />
     <Compile Include="Assets/Characters/Silkfang/Scripts/SilkfangHealth.cs" />
+    <Compile Include="Assets/Characters/CorpseSweeper/Scripts/CorpseSweeperPatrol.cs" />
     <Compile Include="Assets/Characters/Reg/Scripts/RegMovement.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -14,11 +14,11 @@ public class RegDamage : MonoBehaviour
         damage = 1; 
     }
 
-    private void onTriggerEnter2D(Collision2D col) 
+    private void OnCollisionStay2D(Collision2D col) 
     { 
         Debug.Log("hurt"); 
         silkfangHealth = col.gameObject.GetComponent<SilkfangHealth>(); 
-        if(Input.GetKeyDown(KeyCode.R) || Input.GetKey(KeyCode.R)) 
+        if(Input.GetKeyDown(KeyCode.P) || Input.GetKey(KeyCode.P)) 
             silkfangHealth.TakeDamage(damage); 
     }
 }
