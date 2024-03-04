@@ -9,6 +9,7 @@ public class RegMovement : MonoBehaviour
     public Rigidbody2D character; 
     public SilkfangHealth silkfangHealth; 
     public CorpseSweeperHealth corpseSweeperHealth; 
+    public CrimsonSplitjawHealth crimsonSplitjawHealth; 
 
     float moveSpeed = 10; 
     float horizontal; 
@@ -59,10 +60,18 @@ public class RegMovement : MonoBehaviour
                 silkfangHealth.TakeDamage(damage); 
         }
         if (col.gameObject.tag == "CorpseSweeper") { 
+            Debug.Log(col.gameObject); 
             Debug.Log(col.gameObject.GetComponent<CorpseSweeperHealth>()); 
             corpseSweeperHealth = col.gameObject.GetComponent<CorpseSweeperHealth>(); 
             if (Input.GetKeyDown(KeyCode.P) || Input.GetKey(KeyCode.P)) 
                 corpseSweeperHealth.TakeDamage(damage); 
+        }
+        if (col.gameObject.tag == "CrimsonSplitjaw") { 
+            Debug.Log(col.gameObject); 
+            Debug.Log(col.gameObject.GetComponent<CrimsonSplitjawHealth>()); 
+            crimsonSplitjawHealth = col.gameObject.GetComponent<CrimsonSplitjawHealth>(); 
+            if (Input.GetKeyDown(KeyCode.P) || Input.GetKey(KeyCode.P)) 
+                crimsonSplitjawHealth.TakeDamage(damage); 
         }
     }
 

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Reg
   - Silkfang
+  - CorpseSweeper
+  - Monster
+  - CrimsonSplitjaw
   layers:
   - Default
   - TransparentFX

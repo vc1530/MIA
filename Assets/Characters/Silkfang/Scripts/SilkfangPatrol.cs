@@ -31,13 +31,13 @@ public class SilkfangPatrol : MonoBehaviour
         
         if (currentPoint == pointB.transform) 
         { 
-            Debug.Log(Vector2.Distance(transform.position, currentPoint.position)); 
+            //Debug.Log(Vector2.Distance(transform.position, currentPoint.position)); 
             silkfang.velocity = new Vector2(speed, 0); 
             GetComponent<SpriteRenderer>().flipX = true;
         }
         else 
         { 
-            Debug.Log(Vector2.Distance(transform.position, currentPoint.position)); 
+            //Debug.Log(Vector2.Distance(transform.position, currentPoint.position)); 
             silkfang.velocity = new Vector2(-speed, 0); 
             GetComponent<SpriteRenderer>().flipX = false;
         }
