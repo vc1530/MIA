@@ -66,13 +66,16 @@
     <Compile Include="Assets/Characters/Silkfang/Scripts/SilkfangPatrol.cs" />
     <Compile Include="Assets/Characters/CrimsonSplitjaw/Scripts/CrimsonSplitjawPatrol.cs" />
     <Compile Include="Assets/Characters/CorpseSweeper/Scripts/CorpseSweeperHealth.cs" />
+    <Compile Include="Assets/Characters/Monsters/MonsterPatrol.cs" />
     <Compile Include="Assets/Characters/CrimsonSplitjaw/Scripts/CrimsonSplitjawHealth.cs" />
     <Compile Include="Assets/Characters/Reg/Scripts/RegDamage.cs" />
     <Compile Include="Assets/Characters/Silkfang/Scripts/SilkfangDamage.cs" />
     <Compile Include="Assets/Characters/Reg/Scripts/RegHealth.cs" />
     <Compile Include="Assets/Characters/Silkfang/Scripts/SilkfangHealth.cs" />
     <Compile Include="Assets/Characters/CorpseSweeper/Scripts/CorpseSweeperPatrol.cs" />
+    <Compile Include="Assets/Characters/Monsters/MonsterHealth.cs" />
     <Compile Include="Assets/Characters/Reg/Scripts/RegMovement.cs" />
+    <Compile Include="Assets/Characters/Monsters/MonsterDamage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

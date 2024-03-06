@@ -6,7 +6,7 @@ public class RegDamage : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public SilkfangHealth silkfangHealth; 
+    public MonsterHealth monsterHealth; 
     int damage; 
 
     void Start()
@@ -14,11 +14,13 @@ public class RegDamage : MonoBehaviour
         damage = 1; 
     }
 
-    private void OnCollisionStay2D(Collision2D col) 
+    private void OnTriggerStay2D(Collider2D col) 
     { 
-        Debug.Log("hurt"); 
-        silkfangHealth = col.gameObject.GetComponent<SilkfangHealth>(); 
-        if(Input.GetKeyDown(KeyCode.P) || Input.GetKey(KeyCode.P)) 
-            silkfangHealth.TakeDamage(damage); 
+        if (col.gameObject.tag == "Monster") { 
+            Debug.Log("collided into Monster"); 
+            monsterHealth = col.gameObject.GetComponent<MonsterHealth>(); 
+            if(Input.GetKeyDown(KeyCode.P) || Input.GetKey(KeyCode.P)) 
+                monsterHealth.TakeDamage(damage); 
+        }
     }
 }

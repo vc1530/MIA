@@ -27,18 +27,18 @@ public class CrimsonSplitjawPatrol : MonoBehaviour
     void Update()
 
     {
-        anim.Play("Idle"); 
+        //anim.Play("Idle"); 
         Vector2 point = currentPoint.position - transform.position; 
         
         if (currentPoint == pointF.transform) 
         { 
-            Debug.Log(Vector2.Distance(transform.position, currentPoint.position)); 
+            //Debug.Log(Vector2.Distance(transform.position, currentPoint.position)); 
             crimsonSplitjaw.velocity = new Vector2(speed, 0); 
             GetComponent<SpriteRenderer>().flipX = true;
         }
         else 
         { 
-            Debug.Log(Vector2.Distance(transform.position, currentPoint.position)); 
+            //Debug.Log(Vector2.Distance(transform.position, currentPoint.position)); 
             crimsonSplitjaw.velocity = new Vector2(-speed, 0); 
             GetComponent<SpriteRenderer>().flipX = false;
         }
