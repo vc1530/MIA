@@ -7,6 +7,7 @@ public class RegMovement : MonoBehaviour
 
     public Animator anim; 
     public Rigidbody2D character; 
+    public GameObject AttackArea; 
 
     float moveSpeed = 10; 
     float horizontal; 
@@ -17,6 +18,7 @@ public class RegMovement : MonoBehaviour
         //damage = 1; 
         anim = gameObject.GetComponent<Animator>(); 
         character = gameObject.GetComponent<Rigidbody2D>(); 
+        AttackArea = GameObject.Find("AttackArea"); 
     }
 
     // Update is called once per frame
@@ -26,12 +28,14 @@ public class RegMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKey(KeyCode.A))  
         { 
             GetComponent<SpriteRenderer>().flipX = true;
+            AttackArea.GetComponent<CircleCollider2D>().offset = new Vector2(-1.6f, 0); 
             anim.SetBool("isWalking", true); 
             anim.SetBool("isHurt", false); 
         }
         if(Input.GetKeyDown(KeyCode.D) || Input.GetKey(KeyCode.D))
         {
             GetComponent<SpriteRenderer>().flipX = false;
+            AttackArea.GetComponent<CircleCollider2D>().offset = new Vector2(0, 0); 
             anim.SetBool("isWalking", true);
             anim.SetBool("isHurt", false); 
         } 

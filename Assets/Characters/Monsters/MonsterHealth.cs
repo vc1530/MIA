@@ -26,12 +26,12 @@ public class MonsterHealth : MonoBehaviour
     {
         Debug.Log("taking damage"); 
         anim.Play("Hurt"); 
-    //    if(animCnt > animPlayInterval)
-    //     {
-    //         anim.SetBool("isHurt", true);
-    //         StartCoroutine(Hurt());
-    //         animCnt = 0;
-    //     }
+       if(animCnt > animPlayInterval)
+        {
+            anim.SetBool("isHurt", true);
+            StartCoroutine(Hurt());
+            animCnt = 0;
+        }
         //anim.SetBool("isHurt", true); 
         health -= damage; 
         //anim.SetBool("isHurt", false); 
