@@ -15,35 +15,40 @@ public class MonsterPatrol : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        monster = GetComponent<Rigidbody2D>(); 
-        anim = GetComponent<Animator>(); 
+        monster = this.GetComponent<Rigidbody2D>(); 
+        anim = this.GetComponent<Animator>(); 
         currentPoint = pointB.transform; 
         speed = 2; 
-        GetComponent<SpriteRenderer>().flipX = true;
+        this.GetComponent<SpriteRenderer>().flipX = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (this.gameObject.tag == "Silkfang") print(monster.velocity); 
         if (currentPoint == pointB.transform) { 
             monster.velocity = new Vector2(speed, 0); 
+            if (this.gameObject.tag == "Silkfang")
+            print("point B " + Vector2.Distance(transform.position, currentPoint.position)); 
         }
         else if (currentPoint == pointA.transform) { 
             monster.velocity = new Vector2(-speed, 0); 
+            if (this.gameObject.tag == "Silkfang")
+            print("point A " + Vector2.Distance(transform.position, currentPoint.position)); 
         }
 
-        if(currentPoint == pointB.transform && Vector2.Distance(transform.position, currentPoint.position) < 3.5f) 
+        if(currentPoint == pointB.transform && Vector2.Distance(transform.position, currentPoint.position) < 4f) 
         { 
             currentPoint = pointA.transform; 
-            GetComponent<SpriteRenderer>().flipX = false;
-            print("Reach the right side");
+            this.GetComponent<SpriteRenderer>().flipX = false;
+            //print("Reach the right side");
         }
 
-       else if(currentPoint == pointA.transform && Vector2.Distance(transform.position, currentPoint.position) < 3.5f) 
+       else if(currentPoint == pointA.transform && Vector2.Distance(transform.position, currentPoint.position) < 4f) 
         { 
             currentPoint = pointB.transform; 
-            GetComponent<SpriteRenderer>().flipX = true;
-            print("Reach the left side");
+            this.GetComponent<SpriteRenderer>().flipX = true;
+            //print("Reach the left side");
         }
     }
 

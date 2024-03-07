@@ -25,26 +25,30 @@ public class MonsterHealth : MonoBehaviour
     public void TakeDamage(int damage) 
     {
         Debug.Log("taking damage"); 
-        anim.Play("Hurt"); 
-       if(animCnt > animPlayInterval)
+        if (!anim.GetBool("isDead"))
+            anim.Play("Hurt"); 
+        if(animCnt > animPlayInterval)
         {
             anim.SetBool("isHurt", true);
             StartCoroutine(Hurt());
             animCnt = 0;
         }
-        //anim.SetBool("isHurt", true); 
         health -= damage; 
-        //anim.SetBool("isHurt", false); 
-        
         if (health <= 0) 
         { 
             print("monster has died"); 
-            anim.Play("Die"); 
-            Destroy(gameObject); 
+            anim.SetBool("isHurt", false); 
+            anim.SetBool("isDead", true); 
+            this.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0); 
+            StartCoroutine(Die()); 
         }
     }
     private IEnumerator Hurt(){
         yield return new WaitForSeconds(0.3f);
         anim.SetBool("isHurt",false);
+    }
+    private IEnumerator Die(){ 
+        yield return new WaitForSeconds(1.5f); 
+        Destroy(this.gameObject); 
     }
 }
