@@ -18,7 +18,7 @@ public class MonsterDamage : MonoBehaviour
     { 
         if (collision.gameObject.tag == "Reg") 
         { 
-            regHealth = collision.gameObject.GetComponent<RegHealth>(); 
+            regHealth = collision.gameObject.GetComponent<RegHealth>();
             Debug.Log("collided"); 
             regHealth.TakeDamage(damage); 
         }

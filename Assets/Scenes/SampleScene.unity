@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 31325757}
   - component: {fileID: 31325759}
-  - component: {fileID: 31325761}
   - component: {fileID: 31325760}
   m_Layer: 0
   m_Name: AttackArea
@@ -151,7 +150,7 @@ Transform:
   m_GameObject: {fileID: 31325756}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.24, y: 0.11, z: -9.956203}
+  m_LocalPosition: {x: 2.24, y: 0.11, z: 0}
   m_LocalScale: {x: 2.84091, y: 2.84091, z: 2.84091}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -204,34 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2805c97fe77a14407a87b97dbe56fb4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  silkfangHealth: {fileID: 0}
---- !u!50 &31325761
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 31325756}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
+  monsterHealth: {fileID: 0}
 --- !u!1 &43925104
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,9 +330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 43925107}
   character: {fileID: 0}
-  silkfangHealth: {fileID: 591779880}
-  corpseSweeperHealth: {fileID: 0}
-  crimsonSplitjawHealth: {fileID: 0}
+  AttackArea: {fileID: 0}
 --- !u!50 &43925110
 Rigidbody2D:
   serializedVersion: 4
@@ -373,7 +343,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 2.3845525
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 50
@@ -435,8 +405,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ac14596c5fc434899cab76df85acef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
-  health: 500
+  maxHealth: 1000
+  health: 1000
   anim: {fileID: 43925107}
   healthBar: {fileID: 135333141}
 --- !u!1 &102965543
@@ -2359,7 +2329,7 @@ Transform:
   m_GameObject: {fileID: 147531252}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.71, y: -4.92, z: 0}
+  m_LocalPosition: {x: 8.57, y: -4.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4318,7 +4288,7 @@ Transform:
   m_GameObject: {fileID: 343966625}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.05, y: -2.2889085, z: -0.038378626}
+  m_LocalPosition: {x: -8.3, y: -1.2, z: -0.038378626}
   m_LocalScale: {x: 1, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5617,12 +5587,12 @@ GameObject:
   - component: {fileID: 591779872}
   - component: {fileID: 591779876}
   - component: {fileID: 591779879}
-  - component: {fileID: 591779878}
-  - component: {fileID: 591779880}
+  - component: {fileID: 591779882}
   - component: {fileID: 591779881}
+  - component: {fileID: 591779880}
   m_Layer: 0
   m_Name: Silkfang
-  m_TagString: Silkfang
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5742,20 +5712,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &591779878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 591779871}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e2e40cb06e7f4525bdc6315da9cfba3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0
-  regHealth: {fileID: 43925112}
 --- !u!61 &591779879
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5810,12 +5766,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 591779871}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 484f1be473345408b924a30e8ff62eea, type: 3}
+  m_Script: {fileID: 11500000, guid: f7fd919131b53420fbb5bbaf2fcde67d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 200
-  health: 0
-  anim: {fileID: 591779872}
+  damage: 0
+  regHealth: {fileID: 0}
 --- !u!114 &591779881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5825,12 +5780,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 591779871}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b93b9c66b5844cf8b67c060b2b0bed6, type: 3}
+  m_Script: {fileID: 11500000, guid: d79a9d5cf57054d609f9b7647c625bb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointA: {fileID: 0}
-  pointB: {fileID: 0}
-  speed: 0
+  maxHealth: 200
+  health: 0
+  anim: {fileID: 0}
+  animPlayInterval: 3
+--- !u!114 &591779882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591779871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77334a5b497c34db8a1ebecfacb408e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointA: {fileID: 343966625}
+  pointB: {fileID: 1018097732}
+  speed: 2
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -6013,7 +5984,7 @@ Transform:
   m_GameObject: {fileID: 698811443}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.7, y: -40.07, z: 0}
+  m_LocalPosition: {x: 16, y: -38.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6769,7 +6740,7 @@ Transform:
   m_GameObject: {fileID: 785814248}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 37.83, y: -40.01, z: 0}
+  m_LocalPosition: {x: 33, y: -38.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6788,11 +6759,12 @@ GameObject:
   - component: {fileID: 901497883}
   - component: {fileID: 901497882}
   - component: {fileID: 901497881}
+  - component: {fileID: 901497887}
   - component: {fileID: 901497886}
   - component: {fileID: 901497885}
   m_Layer: 0
   m_Name: CrimsonSplitjaw
-  m_TagString: CrimsonSplitjaw
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6807,7 +6779,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 27.57, y: -36.29, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalScale: {x: 2.25, y: 2.25, z: 2.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 161041165}
@@ -6869,7 +6841,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 20
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -6966,12 +6938,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 901497879}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 479b22aefbb6c4210838a9ba2a54ced0, type: 3}
+  m_Script: {fileID: 11500000, guid: 77334a5b497c34db8a1ebecfacb408e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 300
-  health: 0
-  anim: {fileID: 0}
+  pointA: {fileID: 698811443}
+  pointB: {fileID: 785814248}
+  speed: 2
 --- !u!114 &901497886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6981,12 +6953,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 901497879}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6b01597e385d431c82340c9115170e4, type: 3}
+  m_Script: {fileID: 11500000, guid: d79a9d5cf57054d609f9b7647c625bb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointE: {fileID: 0}
-  pointF: {fileID: 0}
-  speed: 0
+  maxHealth: 300
+  health: 0
+  anim: {fileID: 0}
+  animPlayInterval: 3
+--- !u!114 &901497887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901497879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7fd919131b53420fbb5bbaf2fcde67d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  regHealth: {fileID: 0}
 --- !u!1 &1018097732
 GameObject:
   m_ObjectHideFlags: 0
@@ -7012,7 +6999,7 @@ Transform:
   m_GameObject: {fileID: 1018097732}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.4, y: -2.2, z: 0.01892002}
+  m_LocalPosition: {x: 5.4, y: -0.43, z: 0.01892002}
   m_LocalScale: {x: 1, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7217,11 +7204,12 @@ GameObject:
   - component: {fileID: 1472070330}
   - component: {fileID: 1472070329}
   - component: {fileID: 1472070328}
-  - component: {fileID: 1472070327}
+  - component: {fileID: 1472070334}
+  - component: {fileID: 1472070333}
   - component: {fileID: 1472070332}
   m_Layer: 0
   m_Name: CorpseSweeper
-  m_TagString: CorpseSweeper
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7241,21 +7229,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1921351250}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1472070327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1472070325}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4942816a48597499fa7a855fc84419cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pointC: {fileID: 2023803549}
-  pointD: {fileID: 147531252}
-  speed: 2
 --- !u!61 &1472070328
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7313,7 +7286,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 20
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -7410,12 +7383,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 1472070325}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 914c0f943a65741319fa9fc779a363a1, type: 3}
+  m_Script: {fileID: 11500000, guid: f7fd919131b53420fbb5bbaf2fcde67d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 300
+  damage: 0
+  regHealth: {fileID: 0}
+--- !u!114 &1472070333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472070325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77334a5b497c34db8a1ebecfacb408e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointA: {fileID: 2023803549}
+  pointB: {fileID: 147531252}
+  speed: 0
+--- !u!114 &1472070334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472070325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d79a9d5cf57054d609f9b7647c625bb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 250
   health: 0
   anim: {fileID: 0}
+  animPlayInterval: 3
 --- !u!1 &1596324182
 GameObject:
   m_ObjectHideFlags: 0
@@ -13737,7 +13740,7 @@ Transform:
   m_GameObject: {fileID: 2023803549}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.44, y: -4.88, z: 0}
+  m_LocalPosition: {x: -4.1, y: -3.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
