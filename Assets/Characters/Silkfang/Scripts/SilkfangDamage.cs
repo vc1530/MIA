@@ -18,6 +18,7 @@ public class SilkfangDamage : MonoBehaviour
     { 
         if (collision.gameObject.tag == "Reg") 
         { 
+            regHealth = collision.gameObject.GetComponent<RegHealth>();
             Debug.Log("collided"); 
             regHealth.TakeDamage(damage); 
         }
