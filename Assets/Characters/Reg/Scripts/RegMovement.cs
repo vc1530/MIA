@@ -9,8 +9,11 @@ public class RegMovement : MonoBehaviour
     public Rigidbody2D character; 
     public GameObject AttackArea; 
 
-    float moveSpeed = 10; 
-    float horizontal; 
+    public float jumpAmount = 35;
+    public float gravityScale = 10;
+    public float fallingGravityScale = 40;
+
+    public float moveSpeed = 10; 
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +27,8 @@ public class RegMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveReg(); 
+        JumpReg(); 
+        //MoveReg(); 
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKey(KeyCode.A))  
         { 
             GetComponent<SpriteRenderer>().flipX = true;
@@ -52,7 +56,39 @@ public class RegMovement : MonoBehaviour
     }
 
     void MoveReg() { 
-        horizontal = Input.GetAxis("Horizontal"); 
-        character.velocity = new Vector2(horizontal * moveSpeed, 0); 
+        float h = Input.GetAxis("Horizontal");
+        //float v = Input.GetAxis("Vertical");
+
+        Vector3 tempVect = new Vector3(h, 0, 0);
+        tempVect = tempVect.normalized * moveSpeed * Time.deltaTime;
+        character.MovePosition(character.transform.position + tempVect);
+    }
+
+    void JumpReg() { 
+
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
+
+        // Vector3 tempVect = new Vector3(h, v, 0);
+        // tempVect = tempVect.normalized * moveSpeed * Time.deltaTime;
+        // character.MovePosition(character.transform.position + tempVect);
+
+        this.transform.Translate(Input.GetAxis("Horizontal")* moveSpeed * Time.deltaTime,0,0);
+        
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            print("jumping"); 
+            //float jumpForce = Mathf.Sqrt(5 * -2 * (Physics2D.gravity.y * character.gravityScale));
+            character.AddForce(Vector2.up * jumpAmount, ForceMode2D.Impulse);
+        }
+
+        if(character.velocity.y >= 0)
+        {
+            character.gravityScale = gravityScale;
+        }
+        else if (character.velocity.y < 0)
+        {
+            character.gravityScale = fallingGravityScale;
+        }
     }
 }
