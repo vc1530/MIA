@@ -14,21 +14,22 @@ public class RegMovement : MonoBehaviour
     public float fallingGravityScale = 40;
 
     public float moveSpeed = 10; 
+    private bool isGrounded; 
 
     // Start is called before the first frame update
     void Start()
     {
-        //damage = 1; 
         anim = gameObject.GetComponent<Animator>(); 
         character = gameObject.GetComponent<Rigidbody2D>(); 
         AttackArea = GameObject.Find("AttackArea"); 
+        isGrounded = true; 
     }
 
     // Update is called once per frame
     void Update()
     {
-        JumpReg(); 
-        //MoveReg(); 
+        MoveReg(); 
+
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKey(KeyCode.A))  
         { 
             GetComponent<SpriteRenderer>().flipX = true;
@@ -56,29 +57,14 @@ public class RegMovement : MonoBehaviour
     }
 
     void MoveReg() { 
-        float h = Input.GetAxis("Horizontal");
-        //float v = Input.GetAxis("Vertical");
-
-        Vector3 tempVect = new Vector3(h, 0, 0);
-        tempVect = tempVect.normalized * moveSpeed * Time.deltaTime;
-        character.MovePosition(character.transform.position + tempVect);
-    }
-
-    void JumpReg() { 
 
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
 
-        // Vector3 tempVect = new Vector3(h, v, 0);
-        // tempVect = tempVect.normalized * moveSpeed * Time.deltaTime;
-        // character.MovePosition(character.transform.position + tempVect);
-
         this.transform.Translate(Input.GetAxis("Horizontal")* moveSpeed * Time.deltaTime,0,0);
         
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) && isGrounded)
         {
-            print("jumping"); 
-            //float jumpForce = Mathf.Sqrt(5 * -2 * (Physics2D.gravity.y * character.gravityScale));
             character.AddForce(Vector2.up * jumpAmount, ForceMode2D.Impulse);
         }
 
@@ -91,4 +77,17 @@ public class RegMovement : MonoBehaviour
             character.gravityScale = fallingGravityScale;
         }
     }
+
+    void OnCollisionEnter2D(Collision2D col) { 
+        if (col.gameObject.tag == "Floor") { 
+            isGrounded = true; 
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D col) { 
+        if (col.gameObject.tag == "Floor") { 
+            isGrounded = false; 
+        }
+    }
+
 }
