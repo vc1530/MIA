@@ -333,7 +333,7 @@ MonoBehaviour:
   AttackArea: {fileID: 0}
   jumpAmount: 45
   gravityScale: 10
-  fallingGravityScale: 10
+  fallingGravityScale: 25
   moveSpeed: 10
 --- !u!50 &43925110
 Rigidbody2D:
