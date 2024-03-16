@@ -10,11 +10,14 @@ public class MonsterHealth : MonoBehaviour
     public Animator anim; 
     public float animPlayInterval = 3f;
     private float animCnt = 0f;
+
+    public MonsterHealthBar healthBar;
     // Start is called before the first frame update
     void Start()
     {
         health = maxHealth; 
         anim = gameObject.GetComponent<Animator>(); 
+        healthBar.SetMaxHealth(maxHealth);
     }
 
 
@@ -34,6 +37,7 @@ public class MonsterHealth : MonoBehaviour
             animCnt = 0;
         }
         health -= damage; 
+        healthBar.SetHealth(health);
         if (health <= 0) 
         { 
             print("monster has died"); 
