@@ -9,6 +9,7 @@ TagManager:
   - CorpseSweeper
   - Monster
   - CrimsonSplitjaw
+  - Floor
   layers:
   - Default
   - TransparentFX
