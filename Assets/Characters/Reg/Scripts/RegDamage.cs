@@ -11,6 +11,7 @@ public class RegDamage : MonoBehaviour
     public Steak steak;
     public HealthBar regHealthbar;
     public RegHealth regHealth;
+    public RegMovement regMovement;
     int damage;
     int currentHealth;
     /*public float abilityCooldown = 5f;
@@ -19,8 +20,8 @@ public class RegDamage : MonoBehaviour
 
     void Start()
     {
-        damage = 1;
         currentHealth += 10;
+        damage = 50;
         /*
         lastAbilityTime = -abilityCooldown;
         */
@@ -48,14 +49,24 @@ public class RegDamage : MonoBehaviour
     {
         
         if (col.gameObject.tag == "Monster") { 
-            Debug.Log("collided into Monster"); 
             monsterHealth = col.gameObject.GetComponent<MonsterHealth>();
-            if (Input.GetKeyDown(KeyCode.P) || Input.GetKey(KeyCode.P))
+            Debug.Log("collided into Monster" + "cooldown: " + regMovement.isCoolingDown); 
+            if ((Input.GetKeyDown(KeyCode.P) || Input.GetKey(KeyCode.P)) && !regMovement.isCoolingDown)
+            {
+                print("now taking damage"); 
+                monsterHealth.TakeDamage(damage); 
+                /*if (!regMovement.isCoolingDown)
+                {
+                    monsterHealth.TakeDamage(damage);
+                }*/
+                /*else if (regMovement.isCoolingDown == false)
+                {
+                    monsterHealth.TakeDamage(0);
+                }#1#*/
+                
+            }
             
-                monsterHealth.TakeDamage(damage);
-                /*
-                lastAbilityTime = Time.time;
-                */
+              
         }
 
         if (col.gameObject.tag == "Food")

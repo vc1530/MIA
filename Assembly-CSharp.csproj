@@ -55,6 +55,7 @@
     <Compile Include="Assets\Health\RegHealth\HealthBar.cs" />
     <Compile Include="Assets\Characters\Monsters\MonsterHealth.cs" />
     <Compile Include="Assets\Characters\Reg\Scripts\RegMovement.cs" />
+    <Compile Include="Assets\Characters\Reg\Scripts\InputCooldown.cs" />
     <Compile Include="Assets\Characters\Monsters\MonsterDamage.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />

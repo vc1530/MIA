@@ -14,7 +14,10 @@ public class RegMovement : MonoBehaviour
     public float gravityScale = 10;
     public float fallingGravityScale = 40;
 
-    public float moveSpeed = 10; 
+    public float moveSpeed = 10;
+    public float cooldownTime = 0f;
+    public bool isCoolingDown = false; 
+    
     private bool isGrounded; 
 
     // Start is called before the first frame update
@@ -48,8 +51,10 @@ public class RegMovement : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
             anim.SetBool("isWalking", false);
 
-        if(Input.GetKeyDown(KeyCode.P) || Input.GetKey(KeyCode.P)) 
-        { 
+        if((Input.GetKeyDown(KeyCode.P) || Input.GetKey(KeyCode.P)) && !isCoolingDown)
+        {
+            StartCoroutine(Cooldown());
+            print("cooldown working");
             anim.SetBool("isAttacking", true); 
         } 
         if(Input.GetKeyUp(KeyCode.P))
@@ -89,6 +94,14 @@ public class RegMovement : MonoBehaviour
         if (col.gameObject.tag == "Floor") { 
             isGrounded = false; 
         }
+    }
+
+    private IEnumerator Cooldown()
+    {
+        isCoolingDown = true;
+        yield return new WaitForSeconds(cooldownTime);
+        isCoolingDown = false;
+        anim.SetBool("isAttacking",false);
     }
 
 }
