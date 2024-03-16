@@ -25,7 +25,12 @@ public class RegHealth : MonoBehaviour
         if (health <= 0) 
         { 
             Destroy(gameObject);
+            LoadScene("Restart_GameOver");
         }
+    }
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 }
 
