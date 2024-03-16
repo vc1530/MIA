@@ -9,6 +9,7 @@ TagManager:
   - CorpseSweeper
   - Monster
   - CrimsonSplitjaw
+  - Food
   layers:
   - Default
   - TransparentFX
