@@ -31,5 +31,12 @@ public class RegHealth : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void EatFood(int food)
+    {
+        print("im eating him");
+        if (health <= maxHealth) health += food;
+        healthBar.SetHealth(health); 
+    }
 }
 

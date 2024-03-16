@@ -90,6 +90,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scenes\RestartScene.cs" />
     <Compile Include="Assets\Characters\Monsters\MonsterPatrol.cs" />
+    <Compile Include="Assets\Health\Food\Steak.cs" />
     <Compile Include="Assets\Health\Cooldown\Cooldown.cs" />
     <Compile Include="Assets\Health\MonsterHealth\MonsterHealthBar.cs" />
     <Compile Include="Assets\Characters\Reg\Scripts\RegDamage.cs" />

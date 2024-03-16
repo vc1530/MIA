@@ -5,15 +5,17 @@ public class ArmController : MonoBehaviour
     public Transform armEnd;
     public LineRenderer lineRenderer;
     public float armSpeed = 10f;
-    public float launchForce = 50f; // Adjust as needed
-    public float verticalLaunchForce = 30f; // Adjust as needed for the desired height
-    public float horizontalLaunchDistance = 20f; // Adjust as needed for the desired distance
+    public float launchForce = 500f; // Adjust as needed
+    public float verticalLaunchForce = 100f; // Adjust as needed for the desired height
+    public float horizontalLaunchDistance = 1f; // Adjust as needed for the desired distance
     public LayerMask latchLayer; // Layer mask to specify which objects can be latched onto
+    public float armZOffset = -0.1f; // Negative Z offset for the arm
 
     private bool isExtendingArm = false;
     private GameObject grabbedObject;
     private Vector2 launchDirection;
-    //private GameObject currentPlatform; // Track the current platform the character is on
+    
+    private GameObject currentPlatform; // Track the current platform the character is on
 
     void Update()
     {
@@ -21,13 +23,13 @@ public class ArmController : MonoBehaviour
         {
             isExtendingArm = true;
             lineRenderer.enabled = true;
-            lineRenderer.SetPosition(0, transform.position);
+            lineRenderer.SetPosition(0, transform.position + new Vector3(0f, 0f, armZOffset)); // Set the initial Z position
             RaycastHit2D hit = Physics2D.Raycast(transform.position, GetMouseWorldPosition() - transform.position, Mathf.Infinity, latchLayer);
             if (hit.collider != null) 
             //&& hit.collider.gameObject != currentPlatform) // Check if the hit platform is not the current platform
             {
-                lineRenderer.SetPosition(1, hit.point);
-                armEnd.position = hit.point;
+                lineRenderer.SetPosition(1, hit.point + new Vector2(0f, 0f)); // Ensure the line is flat in 2D space
+                armEnd.position = hit.point + new Vector2(0f, 0f); // Ensure the arm end is flat in 2D space
                 if (hit.collider.CompareTag("Floor"))
                 {
                     grabbedObject = hit.collider.gameObject;
@@ -37,7 +39,7 @@ public class ArmController : MonoBehaviour
             }
             else
             {
-                lineRenderer.SetPosition(1, GetMouseWorldPosition());
+                lineRenderer.SetPosition(1, GetMouseWorldPosition() + new Vector3(0f, 0f, armZOffset)); // Set the initial Z position
             }
         }
         else if (!Input.GetKey(KeyCode.Space) && isExtendingArm)
@@ -77,7 +79,8 @@ public class ArmController : MonoBehaviour
         while (elapsedTime < time)
         {
             elapsedTime += Time.deltaTime;
-            armEnd.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / time);
+            armEnd.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / time) + new Vector3(0f, 0f, armZOffset); // Set the Z position
+            lineRenderer.SetPosition(1, armEnd.position); // Update the line position
             yield return null;
         }
     }

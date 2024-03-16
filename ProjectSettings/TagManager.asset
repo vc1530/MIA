@@ -9,12 +9,13 @@ TagManager:
   - CorpseSweeper
   - Monster
   - CrimsonSplitjaw
+  - Food
   - Floor
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Floor 
   - Water
   - UI
   - 
