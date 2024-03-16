@@ -14,6 +14,7 @@ public class ArmController : MonoBehaviour
     private bool isExtendingArm = false;
     private GameObject grabbedObject;
     private Vector2 launchDirection;
+    
     private GameObject currentPlatform; // Track the current platform the character is on
 
     void Update()

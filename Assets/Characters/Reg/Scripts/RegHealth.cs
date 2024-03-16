@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RegHealth : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class RegHealth : MonoBehaviour
         healthBar.SetHealth(health);
         if (health <= 0) 
         { 
-            Destroy(gameObject); 
+            Destroy(gameObject);
         }
     }
 
@@ -38,3 +39,4 @@ public class RegHealth : MonoBehaviour
         healthBar.SetHealth(health); 
     }
 }
+
