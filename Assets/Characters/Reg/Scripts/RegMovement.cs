@@ -1,41 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RegMovement : MonoBehaviour
 {
 
     public Animator anim; 
     public Rigidbody2D character; 
-    public SilkfangHealth silkfangHealth; 
-    public CorpseSweeperHealth corpseSweeperHealth; 
-    public CrimsonSplitjawHealth crimsonSplitjawHealth; 
+    public GameObject AttackArea; 
 
-    float moveSpeed = 10; 
-    float horizontal; 
-    int damage; 
+    public float jumpAmount = 35;
+    public float gravityScale = 10;
+    public float fallingGravityScale = 40;
+
+    public float moveSpeed = 10; 
+    private bool isGrounded; 
 
     // Start is called before the first frame update
     void Start()
     {
-        damage = 1; 
         anim = gameObject.GetComponent<Animator>(); 
         character = gameObject.GetComponent<Rigidbody2D>(); 
+        AttackArea = GameObject.Find("AttackArea"); 
+        isGrounded = true; 
     }
 
     // Update is called once per frame
     void Update()
     {
         MoveReg(); 
+
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKey(KeyCode.A))  
         { 
             GetComponent<SpriteRenderer>().flipX = true;
+            AttackArea.GetComponent<CircleCollider2D>().offset = new Vector2(-1.6f, 0); 
             anim.SetBool("isWalking", true); 
             anim.SetBool("isHurt", false); 
         }
         if(Input.GetKeyDown(KeyCode.D) || Input.GetKey(KeyCode.D))
         {
             GetComponent<SpriteRenderer>().flipX = false;
+            AttackArea.GetComponent<CircleCollider2D>().offset = new Vector2(0, 0); 
             anim.SetBool("isWalking", true);
             anim.SetBool("isHurt", false); 
         } 
@@ -51,32 +57,38 @@ public class RegMovement : MonoBehaviour
        
     }
 
-    private void OnCollisionStay2D(Collision2D col) 
-    { 
-        if (col.gameObject.tag == "Silkfang") { 
-            Debug.Log(col.gameObject.GetComponent<SilkfangHealth>()); 
-            silkfangHealth = col.gameObject.GetComponent<SilkfangHealth>(); 
-            if(Input.GetKeyDown(KeyCode.P) || Input.GetKey(KeyCode.P)) 
-                silkfangHealth.TakeDamage(damage); 
+    void MoveReg() { 
+
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
+
+        this.transform.Translate(Input.GetAxis("Horizontal")* moveSpeed * Time.deltaTime,0,0);
+        
+        if (Input.GetKeyDown(KeyCode.W) && isGrounded)
+        {
+            character.AddForce(Vector2.up * jumpAmount, ForceMode2D.Impulse);
         }
-        if (col.gameObject.tag == "CorpseSweeper") { 
-            Debug.Log(col.gameObject); 
-            Debug.Log(col.gameObject.GetComponent<CorpseSweeperHealth>()); 
-            corpseSweeperHealth = col.gameObject.GetComponent<CorpseSweeperHealth>(); 
-            if (Input.GetKeyDown(KeyCode.P) || Input.GetKey(KeyCode.P)) 
-                corpseSweeperHealth.TakeDamage(damage); 
+
+        if(character.velocity.y >= 0)
+        {
+            character.gravityScale = gravityScale;
         }
-        if (col.gameObject.tag == "CrimsonSplitjaw") { 
-            Debug.Log(col.gameObject); 
-            Debug.Log(col.gameObject.GetComponent<CrimsonSplitjawHealth>()); 
-            crimsonSplitjawHealth = col.gameObject.GetComponent<CrimsonSplitjawHealth>(); 
-            if (Input.GetKeyDown(KeyCode.P) || Input.GetKey(KeyCode.P)) 
-                crimsonSplitjawHealth.TakeDamage(damage); 
+        else if (character.velocity.y < 0)
+        {
+            character.gravityScale = fallingGravityScale;
         }
     }
 
-    void MoveReg() { 
-        horizontal = Input.GetAxis("Horizontal"); 
-        character.velocity = new Vector2(horizontal * moveSpeed, 0); 
+    void OnCollisionEnter2D(Collision2D col) { 
+        if (col.gameObject.tag == "Floor") { 
+            isGrounded = true; 
+        }
     }
+
+    void OnCollisionExit2D(Collision2D col) { 
+        if (col.gameObject.tag == "Floor") { 
+            isGrounded = false; 
+        }
+    }
+
 }
