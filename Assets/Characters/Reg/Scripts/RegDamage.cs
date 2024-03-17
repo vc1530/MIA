@@ -8,6 +8,7 @@ public class RegDamage : MonoBehaviour
     // Start is called before the first frame update
 
     public MonsterHealth monsterHealth;
+    public MonsterHealthBar monsterHealthBar;
     public Steak steak;
     public HealthBar regHealthbar;
     public RegHealth regHealth;
@@ -51,6 +52,13 @@ public class RegDamage : MonoBehaviour
         if (col.gameObject.tag == "Monster") { 
             
             monsterHealth = col.gameObject.GetComponent<MonsterHealth>();
+
+            if (monsterHealth.health == monsterHealth.maxHealth)
+            {
+                print("bumping into new monster");
+                monsterHealthBar.slider.value = monsterHealth.maxHealth;
+            }
+
             Debug.Log("collided into Monster"+"cooldown: " + regMovement.isCoolingDown);
             if (Input.GetKeyDown(KeyCode.P) && !regMovement.isCoolingDown)
             {
