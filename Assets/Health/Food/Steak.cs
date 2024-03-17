@@ -40,7 +40,7 @@ public class Steak : MonoBehaviour
     }
     
     private IEnumerator Die(){ 
-        yield return new WaitForSeconds(1f); 
+        yield return new WaitForSeconds(1.5f); 
         Destroy(this.gameObject); 
     } 
    
