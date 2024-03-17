@@ -15,7 +15,10 @@ public class RegMovement : MonoBehaviour
     public float fallingGravityScale = 40;
 
     public float moveSpeed = 10; 
-    private bool isGrounded; 
+    private bool isGrounded;
+
+    public float cooldownTime = 0f;
+    public bool isCoolingDown = false;
 
     // Start is called before the first frame update
     void Start()
@@ -89,6 +92,14 @@ public class RegMovement : MonoBehaviour
         if (col.gameObject.tag == "Floor") { 
             isGrounded = false; 
         }
+    }
+
+    private IEnumerator Cooldown()
+    {
+        isCoolingDown = true;
+        yield return new WaitForSeconds(cooldownTime);
+        isCoolingDown = false;
+        anim.SetBool("isAttacking",false);
     }
 
 }
