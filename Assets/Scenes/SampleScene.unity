@@ -7456,7 +7456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 50
-  regHealth: {fileID: 0}
+  regHealth: {fileID: 43925112}
 --- !u!1 &1018097732
 GameObject:
   m_ObjectHideFlags: 0
@@ -7944,7 +7944,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 50
-  regHealth: {fileID: 0}
+  regHealth: {fileID: 43925112}
 --- !u!114 &1472070333
 MonoBehaviour:
   m_ObjectHideFlags: 0
