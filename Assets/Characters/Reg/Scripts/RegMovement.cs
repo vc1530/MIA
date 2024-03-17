@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class RegMovement : MonoBehaviour
 {
@@ -85,6 +86,11 @@ public class RegMovement : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col) { 
         if (col.gameObject.tag == "Floor") { 
             isGrounded = true; 
+        }
+
+        if(col.gameObject.tag == "NanachiHouse")
+        {
+            SceneManager.LoadScene("Restart_Win");
         }
     }
 

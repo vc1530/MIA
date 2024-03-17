@@ -11,11 +11,12 @@ TagManager:
   - CrimsonSplitjaw
   - Food
   - Floor
+  - NanachiHouse
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Floor 
+  - Floor
   - Water
   - UI
   - 

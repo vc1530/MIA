@@ -59,6 +59,13 @@ public class RegDamage : MonoBehaviour
                 monsterHealthBar.slider.value = monsterHealth.maxHealth;
             }
 
+
+
+
+
+
+
+
             Debug.Log("collided into Monster"+"cooldown: " + regMovement.isCoolingDown);
             if (Input.GetKeyDown(KeyCode.P) && !regMovement.isCoolingDown)
             {
